@@ -1,21 +1,18 @@
-/*CSS Reset / Normalize*/
-/*Já deixaremos o básico de reset de estilos. Caso queira adicionar mais informações
-coloque nas sessões indicadas*/
-
 :root{
-    /*Insira a variavel das outras cores inspecionando o modelo do figma*/
-    /*Se esforce para trabalhar com variáveis, é uma dica profissional valiosa*/
-   --cor-de-fundo: #F5F5F5;
-   --cor-de-link: #000;
+    --cor-de-fundo-principal: #F5F5F5;
+    --cor-de-fundo-secundaria: #EAF2FD;
+    --cor-de-texto: #464646;
 }
 
-body {
-    box-sizing: border-box;
-    background-color: var(--cor-de-fundo) ;
-    font-family: 'Raleway';
+* {
     margin: 0;
     padding: 0;
-    line-height: 1;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--cor-de-fundo-principal);
+    color: var(--cor-de-texto);
+    font-family: 'Raleway';
 }
 ol, ul,li {
     list-style: none;
@@ -23,6 +20,18 @@ ol, ul,li {
 a{
     text-decoration: none;
     color: var(--cor-de-link);
+}
+img{
+    overflow: hidden;
+    overflow-clip-margin: 0;
+}
+
+.all {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /*Neste desafio, gostariamos que praticassem a metodologia BEM, caso seintam a vontade 
@@ -41,31 +50,254 @@ https://en.bem.info/methodology/quick-start/*/
 /*Sessão Menu*/
 
 section.menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    height: 56px;
+    width: 100%;
+}
 
+header{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+header h3{
+    font-size: 16px;
+    line-height: 18px;
+}
+
+header img{
+    width: 24px;
+    height: 24px;
+}
+
+.menu__list{
+    display: flex;
+    gap: 32px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.menu__list__item{
+    display: none;
 }
 
 /*Sessão Title*/
 
-section.title{
-
+.title__div{
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px
 }
+
+.title__profile {
+    width: 98px;
+    border-radius: 50%;
+}
+
+.title__container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.title_bio {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 25.83px;
+}
+
+.title__subsection{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.44px;
+}
+
+.title__network {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+}
+
+.title__network__item{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.44px;
+}    
 
 /*Sessão About*/
 
 section.about{
+    background-color: var(--cor-de-fundo-secundaria);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+section.about p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.44px;
+}
+
+.about__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
 
 }
+
+.about__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 25.83px;
+}
+
+/*Sessão Skills*/
+
+section.skills{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    gap: 32px;
+}
+
+.skills__title{
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 25.83px;
+}
+
+.skills__line{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.skills__box{
+    display: flex;
+    width: 156px;
+    height: 118px;
+    padding: 16px;
+    background-color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.78px;
+}
+
+.skills__box ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
 
 /*Sessão Hobbies*/
 
 section.hobbies{
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    gap: 32px;
+}
+
+.hobbies__title{
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 25.83px;
+}
+
+.hobbies__line{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.hobbies__box{
+    display: flex;
+    width: 156px;
+    height: 118px;
+    padding: 16px;
+    background-color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.78px;
+}
+
+.hobbies__box ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 8px;
 }
 
 /* Experiência Acadêmica*/
 
 section.academic{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--cor-de-fundo-secundaria);
+    padding: 32px;
+    gap: 32px;    
+}
 
+.academic__courses{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+}
+
+.academic__courses__list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.academic__courses__box{
+    width: 296px;
+}
+
+.academic__courses__item__img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 118px;
+    background-color: #FFFFFF;
+}
+
+.academic__courses__item__img img{
+    width: 120px;
+}
+
+.academic__courses__item__title{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.78px;
+}
+
+.academic__courses__item__subtitle{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.44px;
 }
 
 /* experiência*/
@@ -83,47 +315,200 @@ section.formcontato{
 /*footeer*/
 
 section.footer{
-   
+
 }
 
 /* Chegou a hora de se desafiar com a responsividade, 
 utilize como referência os breakpoints @media abaixo*/
 
-/*Tablet*/
-@media (min-width: 768px) {
+/*Desktop*/
+@media (min-width: 769px) {
 
 /* Menu */
 
+section.menu{
+    padding: 32px, 0px;
+    height: 88px;
+    width: 1136px;
+}
+
+.menu .menu__list__item{
+    display: flex;
+}
+
+
 /*title*/
+
+.title .title__div{
+    width: 1136px;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.title .title__container {
+    width: 751px;
+    gap: 24px;
+}
+
+.title .title__profile {
+    width: 368px;
+    height: 368px;
+}
+
+.title .title__bio {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 61.05px;
+}
+
+.title .title__subsection {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 25.83px;    
+}
+
+.title .title__network__item {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18.78px;
+}
+
+/*Sessão sobre*/
+
+section.about p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.78px;
+}
+
+.about__container {
+    width: 1136px;
+    gap: 10px
+}
+
+.about .about__title{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 37.57px;
+    margin-bottom: 16px; 
+}
 
 /*Skills*/
 
+.skills .skills__box{
+    width: 176px;
+    height: 174px;
+}
+
 /*Hobbies*/
 
+.hobbies .hobbies__box{
+    width: 176px;
+    height: 174px;
+}
+
 /*Experiências acadêmicas*/
+
+.academic .academic__courses__box{
+    width: 368px;
+}
+
+.academic .academic__courses__item__img {
+    width: 368px;
+    height: 286px;
+    background-color: #ffffff;
+}
+
+.academic__courses__item__img img{
+    width: 160px;
+}
+
+.academic .academic__courses__item__title{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.78px;
+}
+
+.academic .academic__courses__item__subtitle{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.44px;
+}
+
 
 /*Expeirência profissional*/
 
 }
 
-/*Mobile*/
-@media (min-width: 425px) {
+/*Tablet*/
+@media (min-width: 361px) {
 
 /*Menu*/
 
+section.menu{
+    padding: 16px, 32px;
+}
+
+.menu__list__item{
+    display: none;
+}
+
+.menu .menu__list__item__contato{
+    font-size: 14px;
+    font-weight: 700;
+}
+
 /*Titulo*/
+
+.title__div{
+    flex-direction: row-reverse;
+    gap: 32px;
+    padding: 32px;
+}
+
+.title__profile {
+    width: 146px;
+    height: 146px;
+}
+
+.title__network {
+    justify-content: flex-start;
+    gap: 32px;
+}
+
 
 /*Sessão sobre*/
 
 /*Skills*/
 
+.skills__box{
+    width: 224px;
+}
 /*Hobbies*/
- 
+
+.hobbies__box{
+    width: 224px;
+}
+
 /*Formação Acadêmica*/
+
+.academic__courses{
+    gap: 16px;
+}
+
+.academic .academic__courses__box{
+    width: 224px;
+}
+
+.academic .academic__courses__item__img {
+    width: 224px;
+    height: 174px;
+    background-color: #ffffff;
+}
 
 /*Experiência Profissional*/
 
- /*Contato*/
+/*Contato*/
 
 /*Footer*/
 
