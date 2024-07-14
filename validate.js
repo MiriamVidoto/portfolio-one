@@ -1,79 +1,81 @@
-const name = document.getElementById("nome").value;
-const email = document.getElementById("email").value;
-const subject = document.getElementById("assunto").value;
-const message = document.getElementById("mensagem").value;
+const camposDoFormulario = document.querySelectorAll('[required]')
+const formulario = document.querySelector('form')
+const botaoEnviar = document.querySelector('button[type="submit"]')
 
-const validateName = (name) => {
-    if (!name || name.trim() === "") {
-        return "O campo do nome não pode ficar em branco ou vazio.";
-    }
 
-    if (name.length > 50) {
-        return "O campo do nome deve conter no máximo 50 caracteres.";
-    }
-
-    return "";
-}
-
-const validateEmail = (email) => {
-    if (!email || email.trim() === "") {
-        return "O campo do e-mail não pode ficar em branco ou vazio.";
-    }
-
-    if (!/\S+@\S+\.\S+/.test(email)) {
-        return "O campo do e-mail deve estar em formato válido.";
-    }
-
-    return "";
-}
-
-const validateSubject = (subject) => {
-    if (!subject || subject.trim() === "") {
-        return "O campo do assunto não pode ficar em branco ou vazio.";
-    }
-
-    if (subject.length > 50) {
-        return "O campo do assunto deve conter no máximo 50 caracteres.";
-    }
-
-    return "";
-}
-
-const validateMessage = (message) => {
-    if (!message || message.trim() === "") {
-        return "O campo da mensagem não pode ficar em branco ou vazio.";
-    }
-
-    if (message.length > 300) {
-        return "O campo da mensagem deve conter no máximo 300 caracteres.";
-    }
-
-    return "";
-}
-
-const nameError = validateName(name);
-const emailError = validateEmail(email);
-const subjectError = validateSubject(subject);
-const messageError = validateMessage(message);
-
-const isFormValid = () => {
-    if (nameError || emailError || subjectError || messageError) {
-        return false;
-    }
-
-    return true;
-}
-
-const handleSubmit = (e) => {
+formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    if (isFormValid()) {
-        document.getElementById("formcontato__form").submit();
-    } else {
-        document.getElementById("error").innerText = "Por favor, preencha todos os campos corretamente.";
+    const listaRespostas = {
+        "nome": e.target.elements["nome"].value,
+        "email": e.target.elements["email"].value,
+        "assunto": e.target.elements["assunto"].value,
+        "mensagem": e.target.elements["mensagem"].value
     }
+
+    localStorage.setItem("contato", JSON.stringify(listaRespostas));
+    formulario.reset();
+    botaoEnviar.disabled = true;
+})
+
+
+const tiposDeErro = [
+    'valueMissing',
+    'typeMismatch',
+    'tooShort',
+]
+
+const mensagens = {
+    nome: {
+        valueMissing: "O campo de nome não pode estar vazio.",
+        patternMismatch: "Por favor, preencha um nome válido.",
+        tooShort: "Por favor, preencha um nome válido."
+    },
+    email: {
+        valueMissing: "O campo de e-mail não pode estar vazio.",
+        typeMismatch: "Por favor, preencha um email válido.",
+        tooShort: "Por favor, preencha um email válido.",
+    },
+    assunto: {
+        valueMissing: "O campo de assunto não pode estar vazio.",
+        tooShort: "Por favor, preencha um assunto válido."
+    },
+    mensagem: {
+        valueMissing: "O campo de mensagem não pode estar vazio.",
+        tooShort: "Por favor, preencha uma mensagem válida."
+    }
+};
+
+
+function verificaCampo(campo) {
+    let  msg = "";
+    tiposDeErro.forEach(erro => {
+        if (campo.validity[erro]) {
+            msg = mensagens[campo.id][erro];
+        }
+    const mensagemErro = campo.parentNode.querySelector('.mensagem-erro');
+    const validadorDeInput = campo.checkValidity();
+
+    if (!validadorDeInput) {
+        mensagemErro.textContent = msg;
+    } else {
+        mensagemErro.textContent = "";
+        }
+    });
+
+
 }
 
-document.getElementById("myForm").addEventListener("submit", handleSubmit);
+camposDoFormulario.forEach((campo) => {
+    campo.addEventListener("blur", () => verificaCampo(campo));
+    campo.addEventListener("invalid", evento => evento.preventDefault())
+    campo.addEventListener("input", () =>  habilitarBotao());
+})
+
+
+function habilitarBotao() {
+    const camposValidos = Array.from(camposDoFormulario).every(campo => campo.checkValidity());
+    botaoEnviar.disabled = !camposValidos;
+}
 
 

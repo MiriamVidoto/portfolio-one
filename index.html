@@ -210,11 +210,23 @@
                     <h3 class="formcontato__subtext">Quer entrar em contato comigo?</h3>
                     <h3 class="formcontato__subtext">Preencha o formulário ao lado e entrarei em contato o mais rápido possível. </h3>
                     <form class="formcontato__form">
-                        <input class="formcontato__input" type="text" id="nome" placeholder="Nome">
-                        <input class="formcontato__input" type="email" id="email" placeholder="Email">
-                        <input class="formcontato__input" type="text" id="assunto" placeholder="Assunto">
-                        <textarea class="formcontato__textarea" rows="5" cols="40" id="mensagem" name="mensagem" placeholder="Mensagem"></textarea>
-                        <button class="formcontato__botao">Enviar mensagem</button>
+                        <label>
+                            <input class="formcontato__input" type="text" id="nome" placeholder="Nome" required minlength="3" maxlength="50">
+                            <span class="mensagem-erro"></span>
+                        </label>
+                        <label >
+                            <input class="formcontato__input" type="email" id="email" placeholder="Email" required minlength="4">
+                            <span class="mensagem-erro"></span>
+                        </label>
+                        <label >
+                            <input class="formcontato__input" type="text" id="assunto" placeholder="Assunto" required minlength="3" maxlength="50">
+                            <span class="mensagem-erro"></span>
+                        </label>
+                        <label >
+                            <textarea class="formcontato__textarea" rows="5" cols="40" id="mensagem" name="mensagem" placeholder="Mensagem" required minlength="3" maxlength="300"></textarea>
+                            <span class="mensagem-erro"></span>
+                        </label>
+                        <button class="formcontato__botao" type="submit" disabled="true">Enviar mensagem</button>
                     </form>
                 </div>
             </div>

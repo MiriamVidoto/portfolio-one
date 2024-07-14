@@ -32,6 +32,25 @@ button {
     background-color: transparent;
 }
 
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.mensagem-erro {
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16.44px;
+
+}
+
 .all {
     overflow: hidden;
     display: flex;
